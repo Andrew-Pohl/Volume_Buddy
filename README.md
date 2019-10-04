@@ -24,7 +24,7 @@ your workflow, remove the need to minimise your current focused app to change a 
 
 # Usage
 
-A distributed exe can be found in the dist folder if you don't wish to set up the develop environment.
+A distributed exe can be found in the releases tab if you don't wish to set up the development environment.
 
 Setting up the dev enviroment:
 ```
