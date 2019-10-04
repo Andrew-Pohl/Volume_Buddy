@@ -1,10 +1,6 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-import queue
-import sys
-import threading
+from PyQt5 import QtCore
 import time
 import keyboard
-import copy
 
 #Thread responsible for creating new hotkeys and 'listing' for keypresses
 class keyboardShortcuts(QtCore.QThread):

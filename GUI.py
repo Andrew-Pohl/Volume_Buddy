@@ -1,12 +1,8 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 import queue
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 from Worker import Worker
 from keyboardShortcuts import keyboardShortcuts
-import sys
-import threading
-import time
-import copy
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -31,8 +27,9 @@ class Ui_MainWindow(object):
         self.keyboardShortcuts.new_key_press.connect(self.ChangeVolume)
         self.session = []
         self.appKeyMap = {}
-        self.worker.start()
         self.keyboardShortcuts.start()
+        self.worker.start()
+
 
     #TODO: this shouldn't really be in the GUI thread
     def ChangeVolume(self):

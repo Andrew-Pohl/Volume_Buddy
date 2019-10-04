@@ -1,8 +1,5 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-import queue
+from PyQt5 import QtCore
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
-import sys
-import threading
 import time
 
 #thread looks to see if any new applications have been opened or old one closed

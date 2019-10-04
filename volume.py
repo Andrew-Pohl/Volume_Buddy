@@ -1,9 +1,8 @@
 from __future__ import print_function
-from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 from GUI import Ui_MainWindow
 import windowStyle.styles
 import windowStyle.window
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 import sys
 
 
