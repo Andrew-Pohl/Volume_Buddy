@@ -6,7 +6,7 @@ your workflow by removing the need to minimise your current focused app and open
 
 ![](Images/GUI.PNG)
 
-#Features
+# Features
 
 • GUI interface
 ```
@@ -22,7 +22,7 @@ your workflow by removing the need to minimise your current focused app and open
 
 • Group applications to 1 key bind
 
-#Usage
+# Usage
 
 A distributed exe can be found in the dist folder if you don't wish to set up the develop environment
 
@@ -45,7 +45,7 @@ Volumn down bind: 'Left shift' + [assigned bind] + 'Page Down'
 
 To adjust the volume step simply change the value in the spin box.
 
-#Upcoming Features
+# Upcoming Features
 • User defined hard key binds
 
 • Checking if the binds are valid (no checking currently!)
