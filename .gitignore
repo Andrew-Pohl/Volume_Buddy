@@ -1,4 +1,4 @@
-dist
+dist/volume
 .idea
 __pycache__
 venv
