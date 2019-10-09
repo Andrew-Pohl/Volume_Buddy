@@ -14,6 +14,7 @@ def main():
     ui.setupUi(MainWindow)
     windowStyle.styles.dark(app)
     mw = windowStyle.window.ModernWindow(MainWindow)
+    mw.setWindowTitle("Volume Buddy")
 
     mw.show()
 

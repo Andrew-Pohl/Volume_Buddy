@@ -21,9 +21,9 @@ class Ui_MainWindow(object):
 
 
         self.threadTwo = QtCore.QThread()
-        self.thread.name = "auto_refresh"
+        self.threadTwo.name = "key_searcher"
         self.keyboardShortcuts = keyboardShortcuts(self.keyBindQueue, self.keyPressQueue)
-        self.keyboardShortcuts.moveToThread(self.thread)
+        self.keyboardShortcuts.moveToThread(self.threadTwo)
         self.keyboardShortcuts.new_key_press.connect(self.ChangeVolume)
         self.session = []
         self.appKeyMap = {}
