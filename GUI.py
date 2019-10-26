@@ -1,8 +1,12 @@
 from PyQt5 import QtCore, QtWidgets
 import queue
+import copy
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 from Worker import Worker
 from keyboardShortcuts import keyboardShortcuts
+
+combo_box_options = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
+                  'p','q','r','s','t','u','v','w','x','y','z']
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -27,6 +31,7 @@ class Ui_MainWindow(object):
         self.keyboardShortcuts.new_key_press.connect(self.ChangeVolume)
         self.session = []
         self.appKeyMap = {}
+        self.comboMap = {}
         self.keyboardShortcuts.start()
         self.worker.start()
 
@@ -81,9 +86,15 @@ class Ui_MainWindow(object):
                         self.tableWidget.insertRow(tableHeight)
                         self.tableWidget.setItem(tableHeight, 0, QtWidgets.QTableWidgetItem(session.Process.name()))
                         self.tableWidget.setItem(tableHeight, 1, QtWidgets.QTableWidgetItem(str(int(level * 100))))
-                        self.tableWidget.setItem(tableHeight, 2, QtWidgets.QTableWidgetItem(str(tableHeight)))
+
                         currentApps.append(session.Process.name())
                         self.appKeyMap[session.Process.name()] = str(tableHeight)
+                        combo = QtWidgets.QComboBox()
+                        for t in combo_box_options:
+                            combo.addItem(t)
+                        self.comboMap[session.Process.name()] = combo
+                        i =  self.tableWidget.model().index(tableHeight,2)
+                        self.tableWidget.setIndexWidget(i,self.comboMap[session.Process.name()])
                         tableHeight += 1
                     else:
                         self.tableWidget.setItem(currentTablePos, 1, QtWidgets.QTableWidgetItem(str(int(level * 100))))
@@ -96,6 +107,7 @@ class Ui_MainWindow(object):
                 indexVal = currentApps.index(value)
                 self.tableWidget.removeRow(indexVal)
                 del self.appKeyMap[value]
+                del self.comboMap[value]
                 resyncKeys = True
 
         if(resyncKeys):
@@ -110,9 +122,9 @@ class Ui_MainWindow(object):
             for itr in range ((self.tableWidget.rowCount())):
                 if self.tableWidget.item(itr,0).text() == key:
                     break
-            if self.appKeyMap[key] != self.tableWidget.item(itr,2).text():
-                keysToUpdate[key] = self.tableWidget.item(itr,2).text()
-                self.appKeyMap[key] = self.tableWidget.item(itr,2).text()
+            if self.appKeyMap[key] != self.comboMap[key].currentText():
+                keysToUpdate[key] = self.comboMap[key].currentText()
+                self.appKeyMap[key] = self.comboMap[key].currentText()
 
         if keysToUpdate:
             #we have new keys so update

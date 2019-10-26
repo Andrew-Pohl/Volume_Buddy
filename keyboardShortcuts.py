@@ -18,6 +18,7 @@ class keyboardShortcuts(QtCore.QThread):
         self.keyPressQueue.put(volumeChangeDict)
         self.new_key_press.emit()
 
+
     def run(self):
         while(True):
             if (self.keyBindQueue.qsize() != 0):
